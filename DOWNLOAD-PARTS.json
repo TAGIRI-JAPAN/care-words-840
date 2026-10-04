@@ -1,0 +1,47 @@
+{
+  "format": "independent-zip-parts",
+  "archives": [
+    {
+      "name": "care-words-840-cards-01.zip",
+      "first": 1,
+      "last": 140,
+      "bytes": 40188982,
+      "sha256": "a414f0f13cb7aaeb84cba6add76310825e148fa5996551a11f1e96de13d8b879"
+    },
+    {
+      "name": "care-words-840-cards-02.zip",
+      "first": 141,
+      "last": 280,
+      "bytes": 41429698,
+      "sha256": "1e268bef825ee8624d00d60533610bd63cf4c754485f7abf245da636313995b9"
+    },
+    {
+      "name": "care-words-840-cards-03.zip",
+      "first": 281,
+      "last": 420,
+      "bytes": 41687174,
+      "sha256": "e563b2bc707fc9331221bf323f64640958e53958b080884dd161d2e41a5d8707"
+    },
+    {
+      "name": "care-words-840-cards-04.zip",
+      "first": 421,
+      "last": 560,
+      "bytes": 40828472,
+      "sha256": "4a047d1ab5b741534554f0077ad5e8cd404ab3c4304d72870e7355294b883d8f"
+    },
+    {
+      "name": "care-words-840-cards-05.zip",
+      "first": 561,
+      "last": 700,
+      "bytes": 40812442,
+      "sha256": "d4dc4dbfb6ce9f90717b013cdcc253418a6c6db1395994f4df99efcc8984f517"
+    },
+    {
+      "name": "care-words-840-cards-06.zip",
+      "first": 701,
+      "last": 840,
+      "bytes": 42321210,
+      "sha256": "aefe14471971717fca07e2f9ca6a26edeb8ece0fadd0758929a721ca9bec388c"
+    }
+  ]
+}

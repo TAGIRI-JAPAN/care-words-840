@@ -1,0 +1,12 @@
+{
+  "name": "care-words-840",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tools/verify.mjs",
+    "test:app": "node tools/test-app.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

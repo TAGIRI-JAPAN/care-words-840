@@ -1,0 +1,131 @@
+﻿CARE WORDS 840 — GitHub 公開手順
+
+このZIPには、最新版のWebアプリ・解説カード840枚・一覧用画像840枚・
+分野別アート・フォントがすべて入っています。
+アプリのビルド、npm install、APIキーの設定は不要です。
+
+■ 最初に：ファイル名と置き場所
+
+配布ZIP名：care-words-840.zip
+リポジトリ名の推奨：care-words-840
+公開の入口：index.html（小文字のまま）
+
+ZIPを右クリック →「すべて展開」してください。
+展開したフォルダーの「中身」をリポジトリの最上位へコピーします。
+GitHubのCode画面を開いたときに、すぐ index.html が見える状態が正解です。
+ZIP自体をアップロードしてもWebサイトにはなりません。
+
+必須ファイル・フォルダー：
+  index.html / studio.css / app.js / study.js / journey.js / cards.json
+  cards/ / thumbs/ / assets/ / .nojekyll
+
+cards/ は 0001.webp ～ 0840.webp、thumbs/ も同じ番号です。
+ファイル名の先頭の0・大文字小文字・フォルダー名は変更しないでください。
+ZIP内には dist/ や余分な親フォルダーを挟んでいません。
+
+■ 初回公開：GitHub Desktopを使う
+
+1. GitHub Desktopをインストールし、自分のGitHubアカウントでサインイン。
+   https://desktop.github.com/
+
+2. GitHub Desktopで File → New repository を選ぶ。
+   Name：care-words-840
+   Local path：Documents内のGitHubフォルダーなど、保存先の「親」を選ぶ。
+   Initialize this repository with a README：チェックして作成してよい。
+   Git ignore：None / License：None
+   Create repository を押す。
+   同じ名前のリポジトリが既にある場合は、下の「既存のリポジトリ」を参照。
+
+3. Repository → Show in Explorer（MacはShow in Finder）で開く。
+   その場所へ、展開したZIPの中身をすべてコピーする。
+   README.md等の置き換え確認が出たら、今回のZIPのファイルへ置き換える。
+   ZIPを展開した外側のフォルダーごと入れないこと。
+   ドットで始まる .nojekyll / .gitattributes / .gitignore も含める。
+   Macで見えなければ Command + Shift + . で隠しファイルを表示する。
+
+4. GitHub Desktopに戻り、Changesの一覧に index.html や cards/ があることを確認。
+   Summaryに「Initial Care Words 840」と入力し、Commit to main を押す。
+   ボタンのブランチ名がmain以外なら、その名前を控える。
+
+5. Publish repository を押す。
+   無料のGitHub FreeでPages公開する場合は、Keep this code privateを外して公開。
+   この場合、コードと画像も公開される。非公開リポジトリでのPages利用はプランによる。
+   公開先・リポジトリ名を確認して Publish repository。
+
+6. Repository → View on GitHub でブラウザを開く。
+   Code画面の最上位に index.html、cards/、thumbs/、assets/ が見えることを確認。
+
+7. Settings → Pages → Build and deployment で設定。
+   Source：Deploy from a branch
+   Branch：main（手順4で別の名前だった場合はそのブランチ）
+   Folder：/ (root)
+   Saveを押す。
+   GitHub Actions用の独自workflowやビルドコマンドは追加不要。
+
+8. GitHubのActionsでPagesの処理が完了するのを待つ。
+   Settings → Pagesに表示される Visit site から開く。
+   通常のURLは https://自分のユーザー名.github.io/care-words-840/ 。
+   公開直後に404なら、まず処理の完了とPagesの表示URLを確認する。
+
+■ 既存のリポジトリがある場合・次回の更新
+
+初回だけ GitHub Desktop → File → Clone repository で対象を取得。
+既に手元にある場合はそのリポジトリを選び、Fetch origin / Pull originで同期する。
+Repository → Show in Explorerで開いた、index.htmlがある場所へ中身を上書きする。
+同じリポジトリ内の無関係なファイルや .git フォルダーは消さない。
+GitHub Desktopで変更を確認 → Commit → Push origin。
+Pagesのブランチと / (root) はそのままでよい。
+
+公開用ファイル名とフォルダー構成は固定。
+バージョン管理はGitHubの履歴で行い、index-new.html / app-final.js等へ変更しない。
+今後このプロジェクトを編集する人も、このルールを維持すること。
+リポジトリ名を変更しても相対パスで動く構成だが、公開URLは変わる。
+同じURLで運用するため、普段はリポジトリ名も care-words-840 のままにする。
+
+■ よくあるつまずき
+
+・ブラウザの「Upload files」だけで送ろうとする
+  GitHubの画面からは一度に100ファイルまで。今回は画像が多いためDesktopを使う。
+
+・index.htmlをダブルクリックすると止まる
+  このアプリはHTTP/HTTPS経由で使う。GitHub Pagesの公開URLで開く。
+  PC内で確認したい場合は、Python 3が入っていれば、展開フォルダーで
+  python -m http.server 8000 --bind 127.0.0.1
+  を実行し、http://127.0.0.1:8000/ を開く。終了は Ctrl + C。
+  Pythonがない場合でも、GitHub Pages公開にPythonは不要。
+
+・文字だけ表示される／画像が出ない
+  cards/、thumbs/、assets/を含めてコピーしたか確認。
+  index.htmlが二重のフォルダーの中に入っていないか確認。
+  ファイル名の変更・拡張子が二重になったファイルがないか確認。
+
+・更新前の画面が残る
+  まずPagesの最新処理の成功を確認し、Ctrl + F5で再読み込み。
+  編集者はキャッシュ対策にURLの?v=番号を更新してよいが、実ファイル名は固定する。
+
+■ 学習記録と発音
+
+学習記録は、その端末・ブラウザ・公開URLのオリジンごとに保存される。
+以前のchatgpt.site版からgithub.io版へ記録は自動移行しない。
+ブラウザのサイトデータを消すと記録も消える。アカウント同期はない。
+発音は端末の英語／日本語読み上げ機能を利用する。
+対応する音声が端末になければ、アプリに利用できない旨が表示される。
+音声ファイルや有料APIキーを別途配置する必要はない。
+
+■ 同梱の確認用ファイル
+
+QA-REPORT.txt：今回、実際に確認した項目と確認できていない範囲。
+checksums.json：配布時の全ファイルのSHA-256一覧（自己自身を除く）。
+tools/verify.mjs：欠落・改名・ファイル破損とアプリ機能の再チェック。
+Node.js 22以上がある場合のみ、展開フォルダーで npm test を実行できる。
+npm installは不要。検査は公開の必須手順ではない。
+内容を編集した後は、配布時のチェックサムと違うためその検査は失敗する。
+
+■ 公式の参考資料（2026-10-04確認）
+
+GitHub Desktopの初回作成と公開：
+https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop
+GitHub Pagesの公開元：
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+ブラウザ経由のファイル追加制限：
+https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository
